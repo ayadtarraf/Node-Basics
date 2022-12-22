@@ -101,5 +101,6 @@ startApp("Ayad tarraf")
 function help(){
   console.log('quit or exit,exit')
   console.log('hello,for hello')
+  console.log('hello name,for hello name')
 
 }
