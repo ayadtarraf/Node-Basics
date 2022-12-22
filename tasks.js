@@ -37,8 +37,8 @@ function onDataReceived(text) {
   if (text === 'quit\n' || text === 'exit\n') {
     quit();
   }
-  else if(text === 'hello\n'){
-    hello();
+  else if(text.trim().startsWith("hello ")){
+    hello(text.trim()+'!');
   }
   else if(text === 'help\n'){
     help();
@@ -66,9 +66,21 @@ function unknownCommand(c){
  *
  * @returns {void}
  */
-function hello(){
-  console.log('hello!')
+function hello(input) {
+  const words = input.split(" ");
+  var outputString;
+  if (words.length > 1){
+    outputString = input.replace("hello", `${words[0]}`,1)
+
+  }
+  else{
+    outputString=input;
+  }
+  outputString=outputString.trim();
+  console.log(outputString);
 }
+  
+
 
 
 /**
@@ -83,7 +95,9 @@ function quit(){
 
 // The following line starts the application
 startApp("Ayad tarraf")
+
 //  help gives commands
+
 function help(){
   console.log('quit or exit,exit')
   console.log('hello,for hello')
