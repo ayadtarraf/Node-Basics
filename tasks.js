@@ -43,6 +43,9 @@ function onDataReceived(text) {
   else if(text === 'help\n'){
     help();
   }
+  else if (text === 'list\n'){
+    list();
+  }
   else{
     unknownCommand(text);
   }
@@ -103,4 +106,11 @@ function help(){
   console.log('hello,for hello')
   console.log('hello name,for hello name')
 
+}
+let listtasks=['strat','command','by']
+function list(){
+  for(let i=0;i<listtasks.length;i++){
+    console.log(`${i+1}. ${listtasks[i]}`)
+  }
+ 
 }
