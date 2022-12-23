@@ -58,9 +58,14 @@ function onDataReceived(text) {
    remove(text);
   }
   else if(text.startsWith('edit')){
-    edit('text')
+    edit('text');
   }
-
+  else if(text.startsWith('check')){
+    check('text');
+  }
+  else if(text.startsWith('uncheck')){
+    uncheck('text');
+  }
   else{
     unknownCommand(text);
   }
@@ -167,11 +172,55 @@ function edit(text){
   }
   // new task
   var tasklist=["add","remove","commit","push"];
+  var tasklist=[{task:"edit",done:true},{task:"add",done:true},{task:"remove",done:false},{task:"list",done:true}];
   // l
   function list(){
-    console.log(NewList)
-    tasklist.map((index)=>{
-    console.log(`${tasklist.indexOf(index)+1}-${index}`);
-    console.log(`${tasklist.indexOf(index)+1}-[*]${index}`);
+    listtasks.map((index)=>{
+    console.log(`${listtasks.indexOf(index)+1}-[*]${index}`);
     })
   }
+  for (let index = 0; index < listtasks.length; index++) {
+    if(listtasks[index].done){
+     console.log("[*]"+":"+listtasks[index].task);
+    }else{
+    console.log("[]"+":"+listtasks[index].task)
+   }
+ }
+ function add(text){
+
+  if(text.slice(3).trim() == "" ){
+    console.log('error you must add a task')
+  }
+  else {
+    listtasks.push(text.slice(3).trim())
+    listtasks.push({task:text.slice(3).trim(),done:false})
+    console.log("added")
+    }
+}
+if(text.slice(4).trim()==""){
+  console.log("error")
+}
+else if(parseInt(text.substring(5))<listtasks.length){
+  listtasks[parseInt(text.substring(4))-1]=text.substring(6).trim()
+  listtasks[parseInt(text.substring(4))-1].task=text.substring(6).trim()
+}
+else if(isNaN(text.substring(4))){
+  listtasks.pop()
+  listtasks.push(text.slice(4).trim())
+ listtasks.push({task:text.slice(4).trim()})
+}
+
+function check(text){
+  if(text.slice(5).trim()==""){
+    console.log("error")
+  }}
+  else{
+    listtasks[parseInt(text.slice(6).trim())-1].done =true;}
+   
+    function uncheck(text){
+      if(text.slice(7).trim()==""){
+        console.log("error")
+      }
+      else{
+        listtasks[parseInt(text.slice(8).trim())-1].done =false;
+      } }
