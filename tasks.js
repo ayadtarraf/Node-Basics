@@ -129,6 +129,7 @@ function list(){
   }
  
 }
+// add
 function add(task){
   let nametask = task.split(' ')[1];
   if(task === 'add'){
@@ -151,7 +152,7 @@ function remove(task){
     console.log("does not exists")
   }
 }
-
+// edit
 function edit(text){
   if(text.slice(4).trim() == ""){
     console.log("eror")
@@ -163,4 +164,14 @@ function edit(text){
    listtasks.pop()
    listtasks.push(text.slice(4).trim())
   }
+  }
+  // new task
+  var tasklist=["add","remove","commit","push"];
+  // l
+  function list(){
+    console.log(NewList)
+    tasklist.map((index)=>{
+    console.log(`${tasklist.indexOf(index)+1}-${index}`);
+    console.log(`${tasklist.indexOf(index)+1}-[*]${index}`);
+    })
   }
