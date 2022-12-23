@@ -213,9 +213,9 @@ else if(isNaN(text.substring(4))){
 function check(text){
   if(text.slice(5).trim()==""){
     console.log("error")
-  }}
+  }
   else{
-    listtasks[parseInt(text.slice(6).trim())-1].done =true;}
+    listtasks[parseInt(text.slice(6).trim())-1].done =true;}}
    
     function uncheck(text){
       if(text.slice(7).trim()==""){
