@@ -57,7 +57,10 @@ function onDataReceived(text) {
   } else if(text.trim().startsWith("remove")){
    remove(text);
   }
- 
+  else if(text.startsWith('edit')){
+    edit('text')
+  }
+
   else{
     unknownCommand(text);
   }
@@ -148,3 +151,16 @@ function remove(task){
     console.log("does not exists")
   }
 }
+
+function edit(text){
+  if(text.slice(4).trim() == ""){
+    console.log("eror")
+  }
+  else if(parseInt(text.substring(5))<listtasks.length){
+    listtasks[parseInt(text.substring(4))-1]=text.substring(6).trim()
+  }
+  else if(isNaN(text.substring(4))){
+   listtasks.pop()
+   listtasks.push(text.slice(4).trim())
+  }
+  }
