@@ -136,7 +136,7 @@ function add(task){
   }
 }
 
-
+// remove
 function remove(task){
   let nametask = task.split(" ");
   listtasks.splice(parseInt(nametask[1]-1), 1);
