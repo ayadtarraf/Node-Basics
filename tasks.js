@@ -54,6 +54,8 @@ function onDataReceived(text) {
     else {
       add('add')
     }
+  } else if(text.trim().startsWith("remove")){
+   remove(text);
   }
   else{
     unknownCommand(text);
@@ -132,4 +134,10 @@ function add(task){
     listtasks.push(nametask);
     console.log('added task');
   }
+}
+
+
+function remove(task){
+  let nametask = task.split(" ");
+  listtasks.splice(parseInt(nametask[1]-1), 1);
 }
